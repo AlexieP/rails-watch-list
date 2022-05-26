@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
-
+  before_action :set_list, only: [:new, :create]
   # GET ALL
   def index
-    @list = List.all
+    @lists = List.all
   end
 
   # SHOW
@@ -14,9 +14,17 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
-  # POST
-  def create
+  # def create
+  #   @movie = Movie.new([:bookmark[:movie]])
+  #   @bookmark = Bookmark.new(bookmark_params)
+  #   @bookmark.movie = @movie
+  #   @bookmark.list = @list
+  #   if @bookmark.save
+  #     redirect_to list_path(@list)
+  #   else
+  #     render :new
+  #   end
+  # end
 
-  end
 
 end
