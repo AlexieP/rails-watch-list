@@ -1,12 +1,12 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:new, :create]
+  before_action :set_list, only: [:show, :destroy]
   # GET ALL
   def index
     @lists = List.all
   end
 
-  # SHOW
   def show
+    @bookmark = Bookmark.new
   end
 
   # NEW
@@ -14,17 +14,28 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
-  # def create
-  #   @movie = Movie.new([:bookmark[:movie]])
-  #   @bookmark = Bookmark.new(bookmark_params)
-  #   @bookmark.movie = @movie
-  #   @bookmark.list = @list
-  #   if @bookmark.save
-  #     redirect_to list_path(@list)
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      render :new
+    end
+  end
 
+  def destroy
+    @list.destroy
+    redirect_to list_path
+  end
+
+  private
+
+  def set_list
+    @list = List.find(params[:id])
+  end
+
+  def list_params
+    params.require(:list).permit(:name)
+  end
 
 end
