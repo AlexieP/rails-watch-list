@@ -1,19 +1,51 @@
-  <h1 class="text-center">🎬 SAVE YOUR WATCH-LISTS 🎬</h1>
 
-<div class="container py-5">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">Check your lists</h3>
-    <%= link_to "🆕", new_list_path %>
-  </div>
-  <div class="row">
-    <% @lists.each do |list| %>
-      <div class="co-12 col-sm-6 col-md-4">
-        <%= link_to list_path(list), class: "text-decoration-none" do %>
-            <div class="card-category">
-              <%= list.name %>
-            </div>
-        <% end %>
+<%# <h1 class="text-center">🎬 SAVE YOUR WATCH-LISTS 🎬</h1> %>
+<body>
+
+  <div class="background-image">
+    <div
+      class="p-5 text-center bg-image position-relative"
+      style="
+        background-image: url('https://i2.wp.com/www.dasym.com/wp-content/uploads/2017/07/Cinema-Image-by-Alexandre-Chassignon-on-Flickr.jpg?fit=2304%2C1728&ssl=1');
+        height: 400px  ;
+      "
+    >
+      <div class="mask position-absolute top-50 start-50 translate-middle" style="background-color: rgba(0, 0, 0, 0.6);">
+          <div class="text-white ">
+            <h1 class="mb-3">🎬 SAVE YOUR WATCH-LISTS 🎬</h1>
+          </div>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+
+  <div id="page-content">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="container py-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <h3 class="mb-0">Check your lists</h3>
+              <%= link_to "🆕", new_list_path %>
+            </div>
+            <div class="row">
+              <% @lists.each do |list| %>
+                <div class="co-12 col-sm-6 col-md-4">
+                  <%= link_to list_path(list), class: "text-decoration-none" do %>
+                      <div class="card-category">
+                        <%= list.name %>
+                      </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Alexie - batch#894</small>
+    </div>
+  </footer>
+</body>
